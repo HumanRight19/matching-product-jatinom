@@ -147,3 +147,63 @@ document.getElementById("submit-btn").addEventListener("click", () => {
     showCard(current);
   }
 });
+
+// === ENTER untuk tombol Next / Submit ===
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Enter") {
+    e.preventDefault(); // Biar tidak reload form
+
+    // Cari card yang sedang aktif
+    const activeCard = document.querySelector(".card.active");
+
+    if (activeCard) {
+      const nextBtn = activeCard.querySelector(".next-btn, #submit-btn");
+      const focused = document.activeElement;
+
+      // Hindari Enter di dropdown
+      if (focused && focused.tagName === "SELECT") {
+        // kalau belum memilih (masih kosong), jangan lanjut
+        if (!focused.value) return;
+      }
+
+      // Jalankan klik Next/Submit
+      if (nextBtn) nextBtn.click();
+    }
+  }
+});
+
+// === AUTO FOCUS saat card berpindah ===
+function autoFocusInput(card) {
+  // Cari elemen input atau select pertama
+  const input = card.querySelector("input, select");
+  if (input) {
+    setTimeout(() => {
+      input.focus();
+    }, 300); // delay kecil biar animasi card selesai dulu
+  }
+}
+
+// === Tambahkan ke semua tombol Next dan Back ===
+document.querySelectorAll(".next-btn").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    setTimeout(() => {
+      const activeCard = document.querySelector(".card.active");
+      if (activeCard) autoFocusInput(activeCard);
+    }, 400); // tunggu animasi transisi antar card
+  });
+});
+
+document.querySelectorAll(".back-btn").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    setTimeout(() => {
+      const activeCard = document.querySelector(".card.active");
+      if (activeCard) autoFocusInput(activeCard);
+    }, 400);
+  });
+});
+
+// === Jalankan fokus pertama kali halaman load ===
+window.addEventListener("load", () => {
+  const firstCard = document.querySelector(".card.active");
+  if (firstCard) autoFocusInput(firstCard);
+});
