@@ -116,14 +116,16 @@ document.getElementById("submit-btn").addEventListener("click", () => {
 
   const hasil = document.getElementById("hasil");
   hasil.innerHTML = `
-          <p>Halo <b>${nama}</b>, berdasarkan data Anda:</p>
-          <ul class="list-disc ml-5 mt-2">
-            <li>Usia: ${usia} tahun</li>
-            <li>Pekerjaan: ${pekerjaan}</li>
-            <li>Tujuan Menabung: ${tujuan}</li>
-          </ul>
-          <p class="mt-3"><b>Rekomendasi Produk:</b> ${rekomendasi}</p>
-        `;
+    <p>Halo <b>${nama}</b>, berdasarkan data Anda:</p>
+    <ul class="list-disc ml-5 mt-2">
+      <li>Usia: ${usia} tahun</li>
+      <li>Pekerjaan: ${pekerjaan}</li>
+      <li>Tujuan Menabung: ${tujuan}</li>
+    </ul>
+    <div class="mt-3">
+      <p class="font-semibold">Rekomendasi Produk:</p>
+      <p class="!text-blue-600 !font-bold text-lg mt-1">${rekomendasi}</p>
+    </div>`;
 
   const hasilGambar = document.getElementById("hasil-gambar");
   if (gambar) {

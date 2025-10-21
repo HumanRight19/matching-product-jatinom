@@ -1,3 +1,12 @@
+html,
+body {
+  height: 100%;
+  overflow-x: hidden;
+}
+main {
+  flex-grow: 1;
+}
+
 @keyframes gradient-x {
   0%,
   100% {
