@@ -96,11 +96,23 @@ document.getElementById("submit-btn").addEventListener("click", () => {
   const transaksi = document.getElementById("transaksi").value;
 
   let rekomendasi = "";
-  if (tujuan === "pendidikan") rekomendasi = "Tabungan Simpeda atau Tabungan SiMuda";
-  else if (tujuan === "pensiun") rekomendasi = "Tabungan Simpeda Pensiun";
-  else if (tujuan === "rutin") rekomendasi = "Tabungan Simpeda";
-  else if (tujuan === "bisnis") rekomendasi = "Giro Perorangan / Tabungan Bisnis";
-  else if (tujuan === "investasi") rekomendasi = "Deposito Bank Jateng";
+  let gambar = "";
+  if (tujuan === "pendidikan") {
+    rekomendasi = "Tabungan Simpeda atau Tabungan SiMuda";
+    gambar = "images/simpeda.jpg";
+  } else if (tujuan === "pensiun") {
+    rekomendasi = "Tabungan Simpeda Pensiun";
+    gambar = "images/2.jpg";
+  } else if (tujuan === "rutin") {
+    rekomendasi = "Tabungan Simpeda";
+    gambar = "images/3.jpg";
+  } else if (tujuan === "bisnis") {
+    rekomendasi = "Giro Perorangan / Tabungan Bisnis";
+    gambar = "images/4.jpg";
+  } else if (tujuan === "investasi") {
+    rekomendasi = "Deposito Bank Jateng";
+    gambar = "images/5.jpg";
+  }
 
   const hasil = document.getElementById("hasil");
   hasil.innerHTML = `
@@ -112,6 +124,14 @@ document.getElementById("submit-btn").addEventListener("click", () => {
           </ul>
           <p class="mt-3"><b>Rekomendasi Produk:</b> ${rekomendasi}</p>
         `;
+
+  const hasilGambar = document.getElementById("hasil-gambar");
+  if (gambar) {
+    hasilGambar.src = gambar;
+    hasilGambar.classList.remove("hidden");
+  } else {
+    hasilGambar.classList.add("hidden");
+  }
 
   confetti({
     particleCount: 100,
