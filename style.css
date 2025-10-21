@@ -1,0 +1,52 @@
+@keyframes gradient-x {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+.animate-gradient-x {
+  background-size: 400% 400%;
+  animation: gradient-x 15s ease infinite;
+}
+
+.input-error {
+  background-color: #fee2e2 !important;
+  border-color: #ef4444 !important;
+}
+
+.error-msg {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #fee2e2;
+  color: #b91c1c;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  margin-top: 4px;
+  transition: all 0.3s ease;
+}
+.error-msg i {
+  color: #dc2626;
+}
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animated-footer {
+  background: linear-gradient(120deg, #fceff9, #e0f7fa, #fff3e0, #f0f4ff);
+  background-size: 300% 300%;
+  animation: gradientShift 10s ease infinite;
+  transition: background 1s ease;
+}

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Rekomendasi Produk Bank Jateng</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  </head>
+  <body class="flex flex-col min-h-screen font-poppins bg-gradient-to-br from-cyan-100 via-yellow-100 to-pink-100 animate-gradient-x">
+    <div class="flex-1 flex justify-center items-start p-5">
+      <div class="w-full max-w-md flex flex-col gap-5">
+        <div class="text-center">
+          <img src="images/LOGO-BANK-JATENG.png" alt="Logo Bank Jateng" class="w-28 mx-auto rounded-lg" />
+        </div>
+
+        <div class="w-full h-2 bg-gray-300 rounded-full overflow-hidden">
+          <div class="h-full bg-blue-500 w-0 transition-all duration-500" id="progress"></div>
+        </div>
+
+        <div class="relative min-h-[450px] w-full overflow-hidden">
+          <!-- CARD 1 -->
+          <div class="absolute top-0 left-0 w-full bg-white rounded-2xl shadow-lg p-8 flex flex-col gap-4 opacity-100 translate-x-0 pointer-events-auto transition-all duration-500 card active">
+            <i class="fa-solid fa-user text-3xl text-blue-500 text-center mb-3"></i>
+            <label class="font-semibold text-gray-800 text-sm">Nama Nasabah</label>
+            <input type="text" id="nama" placeholder="Contoh: Budi Santoso" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 outline-none" />
+            <span class="hidden" id="error-nama"></span>
+            <button class="next-btn bg-gradient-to-r from-blue-500 to-blue-400 text-white font-semibold rounded-xl py-3 flex items-center justify-center gap-2 hover:shadow-lg hover:-translate-y-1 transition-all">
+              Next <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+
+          <!-- CARD 2 -->
+          <div class="absolute top-0 left-0 w-full bg-white rounded-2xl shadow-lg p-8 flex flex-col gap-4 opacity-0 translate-x-12 pointer-events-none transition-all duration-500 card">
+            <i class="fa-solid fa-calendar text-3xl text-blue-500 text-center mb-3"></i>
+            <label class="font-semibold text-gray-800 text-sm">Usia</label>
+            <input type="number" id="usia" min="0" max="120" placeholder="Contoh: 35" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 outline-none" />
+            <span class="hidden" id="error-usia"></span>
+            <div class="flex gap-3">
+              <button class="back-btn bg-gray-500 text-white font-semibold rounded-xl py-3 flex-1 flex items-center justify-center gap-2 hover:bg-gray-600 transition-all"><i class="fa-solid fa-arrow-left"></i> Back</button>
+              <button class="next-btn bg-gradient-to-r from-blue-500 to-blue-400 text-white font-semibold rounded-xl py-3 flex-1 flex items-center justify-center gap-2 hover:shadow-lg hover:-translate-y-1 transition-all">
+                Next <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- CARD 3 -->
+          <div class="absolute top-0 left-0 w-full bg-white rounded-2xl shadow-lg p-8 flex flex-col gap-4 opacity-0 translate-x-12 pointer-events-none transition-all duration-500 card">
+            <i class="fa-solid fa-money-bill text-3xl text-blue-500 text-center mb-3"></i>
+            <label class="font-semibold text-gray-800 text-sm">Pendapatan Bulanan (Rp) <span class="text-gray-500 text-xs">(boleh kosong)</span></label>
+            <input type="text" id="pendapatan" placeholder="Contoh: 5.000.000" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 outline-none" />
+            <span class="hidden" id="error-pendapatan"></span>
+            <div class="flex gap-3">
+              <button class="back-btn bg-gray-500 text-white font-semibold rounded-xl py-3 flex-1 flex items-center justify-center gap-2 hover:bg-gray-600 transition-all"><i class="fa-solid fa-arrow-left"></i> Back</button>
+              <button class="next-btn bg-gradient-to-r from-blue-500 to-blue-400 text-white font-semibold rounded-xl py-3 flex-1 flex items-center justify-center gap-2 hover:shadow-lg hover:-translate-y-1 transition-all">
+                Next <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- CARD 4 -->
+          <div class="absolute top-0 left-0 w-full bg-white rounded-2xl shadow-lg p-8 flex flex-col gap-4 opacity-0 translate-x-12 pointer-events-none transition-all duration-500 card">
+            <i class="fa-solid fa-briefcase text-3xl text-blue-500 text-center mb-3"></i>
+            <label class="font-semibold text-gray-800 text-sm">Pekerjaan</label>
+            <select id="pekerjaan" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 outline-none">
+              <option value="">-- Pilih --</option>
+              <option value="pelajar">Pelajar</option>
+              <option value="pegawai">Pegawai / ASN</option>
+              <option value="wirausaha">Wirausaha / Pebisnis</option>
+              <option value="pensiunan">Pensiunan</option>
+              <option value="lainnya">Lainnya</option>
+            </select>
+            <span class="hidden" id="error-pekerjaan"></span>
+            <div class="flex gap-3">
+              <button class="back-btn bg-gray-500 text-white font-semibold rounded-xl py-3 flex-1 flex items-center justify-center gap-2 hover:bg-gray-600 transition-all"><i class="fa-solid fa-arrow-left"></i> Back</button>
+              <button class="next-btn bg-gradient-to-r from-blue-500 to-blue-400 text-white font-semibold rounded-xl py-3 flex-1 flex items-center justify-center gap-2 hover:shadow-lg hover:-translate-y-1 transition-all">
+                Next <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- CARD 5 -->
+          <div class="absolute top-0 left-0 w-full bg-white rounded-2xl shadow-lg p-8 flex flex-col gap-4 opacity-0 translate-x-12 pointer-events-none transition-all duration-500 card">
+            <i class="fa-solid fa-bullseye text-3xl text-blue-500 text-center mb-3"></i>
+            <label class="font-semibold text-gray-800 text-sm">Tujuan Menabung</label>
+            <select id="tujuan" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 outline-none">
+              <option value="">-- Pilih --</option>
+              <option value="pendidikan">Pendidikan</option>
+              <option value="pensiun">Persiapan Purna</option>
+              <option value="rutin">Menabung Rutin Harian</option>
+              <option value="bisnis">Transaksi Bisnis</option>
+              <option value="investasi">Investasi</option>
+            </select>
+            <span class="hidden" id="error-tujuan"></span>
+            <div class="flex gap-3">
+              <button class="back-btn bg-gray-500 text-white font-semibold rounded-xl py-3 flex-1 flex items-center justify-center gap-2 hover:bg-gray-600 transition-all"><i class="fa-solid fa-arrow-left"></i> Back</button>
+              <button class="next-btn bg-gradient-to-r from-blue-500 to-blue-400 text-white font-semibold rounded-xl py-3 flex-1 flex items-center justify-center gap-2 hover:shadow-lg hover:-translate-y-1 transition-all">
+                Next <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- CARD 6 -->
+          <div class="absolute top-0 left-0 w-full bg-white rounded-2xl shadow-lg p-8 flex flex-col gap-4 opacity-0 translate-x-12 pointer-events-none transition-all duration-500 card">
+            <i class="fa-solid fa-repeat text-3xl text-blue-500 text-center mb-3"></i>
+            <label class="font-semibold text-gray-800 text-sm">Frekuensi Transaksi</label>
+            <select id="transaksi" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 outline-none">
+              <option value="">-- Pilih --</option>
+              <option value="rendah">&lt; 5x per bulan</option>
+              <option value="sedang">5–20x per bulan</option>
+              <option value="tinggi">&gt; 20x per bulan</option>
+            </select>
+            <span class="hidden" id="error-transaksi"></span>
+            <div class="flex gap-3">
+              <button class="back-btn bg-gray-500 text-white font-semibold rounded-xl py-3 flex-1 flex items-center justify-center gap-2 hover:bg-gray-600 transition-all"><i class="fa-solid fa-arrow-left"></i> Back</button>
+              <button class="next-btn bg-green-500 text-white font-semibold rounded-xl py-3 flex-1 flex items-center justify-center gap-2 hover:shadow-lg hover:-translate-y-1 transition-all" id="submit-btn">
+                Submit <i class="fa-solid fa-check"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- CARD 7 -->
+          <div class="absolute top-0 left-0 w-full bg-white rounded-2xl shadow-lg p-8 flex flex-col gap-4 opacity-0 translate-x-12 pointer-events-none transition-all duration-500 card" id="result-card">
+            <h3 class="text-xl font-bold text-gray-800 mb-3">Hasil Rekomendasi</h3>
+            <div id="hasil" class="bg-blue-50 border-l-4 border-blue-500 p-5 rounded-xl text-gray-800 font-medium"></div>
+            <button id="restart-btn" class="mt-3 bg-gray-500 text-white font-semibold rounded-xl py-3 flex items-center justify-center gap-2 hover:bg-gray-600 transition-all"><i class="fa-solid fa-rotate-left"></i> Isi Ulang</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="animated-footer text-gray-700 p-5 text-center border-t-2 flex-shrink-0">
+      <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+        <img src="images/LOGO-BANK-JATENG.png" alt="Logo Bank Jateng" class="w-20" />
+        <p class="text-sm sm:text-base font-medium">&copy; 2025 Bank Jateng KCP Jatinom</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
