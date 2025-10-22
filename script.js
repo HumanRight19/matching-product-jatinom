@@ -102,7 +102,7 @@ document.getElementById("submit-btn").addEventListener("click", () => {
     gambar = "images/simpeda.jpg";
   } else if (tujuan === "pensiun") {
     rekomendasi = "Tabungan Simpeda Pensiun";
-    gambar = "images/2.jpg";
+    gambar = "DPLK.jpg";
   } else if (tujuan === "rutin") {
     rekomendasi = "Tabungan Simpeda";
     gambar = "images/3.jpg";
@@ -111,7 +111,7 @@ document.getElementById("submit-btn").addEventListener("click", () => {
     gambar = "images/4.jpg";
   } else if (tujuan === "investasi") {
     rekomendasi = "Deposito Bank Jateng";
-    gambar = "images/5.jpg";
+    gambar = "Deposito.jpg";
   }
 
   const hasil = document.getElementById("hasil");
